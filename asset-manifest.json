@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.96b854c4.js",
-    "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.96b854c4.js.map": "/static/js/main.96b854c4.js.map"
+    "main.css": "/super-coin-box/static/css/main.073c9b0a.css",
+    "main.js": "/super-coin-box/static/js/main.96b854c4.js",
+    "index.html": "/super-coin-box/index.html",
+    "main.073c9b0a.css.map": "/super-coin-box/static/css/main.073c9b0a.css.map",
+    "main.96b854c4.js.map": "/super-coin-box/static/js/main.96b854c4.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
