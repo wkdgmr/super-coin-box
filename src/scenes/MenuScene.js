@@ -28,8 +28,15 @@ class MenuScene extends Phaser.Scene {
     scoreLabel.setOrigin(0.5, 0.5);
 
     // Display how to start the game
-    const startText = 'press the up arrow key to start';
-    const startLabel = this.add.text(250, 260, startText, {
+    let startText;
+    if (this.sys.game.device.os.desktop) {
+      startText = 'press the up arrow key to start';
+    } else {
+      startText = 'touch the screen to start';
+    }
+
+    // Display the label on the screen
+    let startLabel = this.add.text(250, 260, startText, {
       font: '25px Arial',
       fill: '#fff',
     });
@@ -40,9 +47,8 @@ class MenuScene extends Phaser.Scene {
   }
 
   update() {
-    // When the up arrow key is down
-    if (this.upKey.isDown) {
-      // Start the play scene
+    if (this.upKey.isDown || (!this.sys.game.device.os.desktop
+      && this.input.activePointer.isDown)) {
       this.scene.start('PlayScene');
     }
   }

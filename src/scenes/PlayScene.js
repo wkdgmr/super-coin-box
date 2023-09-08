@@ -71,6 +71,14 @@ class PlayScene extends Phaser.Scene {
     // This method is called 60 times per second after 'create()'
     // It will handle all the game's logic
 
+    if (!this.sys.game.device.os.desktop
+      && this.input.activePointer.y < 60) {
+      // if we tap near the top of the game on mobile
+      // it probably means we want to mute the game
+      // so we oon't start the play scene
+        return;
+      }
+
     // move player
     this.movePlayer();
 
