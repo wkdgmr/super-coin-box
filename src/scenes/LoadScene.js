@@ -7,30 +7,31 @@ class LoadScene extends Phaser.Scene {
 
   preload() {
     // Load all assets
+    const baseUrl = process.env.REACT_APP_BASE_URL;
 
     // background
-    this.load.image('background', '/assets/background.png');
+    this.load.image('background', `${baseUrl}assets/background.png`);
 
     // audio assets
     // jump
-    this.load.audio('jump', ['/assets/jump.ogg', '/assets/jump.mp3']);
+    this.load.audio('jump', [`${baseUrl}assets/jump.ogg`, `${baseUrl}assets/jump.mp3`]);
     // take coin
-    this.load.audio('coin', ['/assets/coin.ogg', '/assets/coin.mp3']);
+    this.load.audio('coin', [`${baseUrl}assets/coin.ogg`, `${baseUrl}assets/coin.mp3`]);
     // player dies
-    this.load.audio('dead', ['/assets/dead.ogg', '/assets/dead.mp3']);
+    this.load.audio('dead', [`${baseUrl}assets/dead.ogg`, `${baseUrl}assets/dead.mp3`]);
 
     // player assets
-    this.load.image('player', '/assets/player.png');
+    this.load.image('player', `${baseUrl}assets/player.png`);
 
     // monster assets
-    this.load.image('enemy', '/assets/enemy.png');
+    this.load.image('enemy', `${baseUrl}assets/enemy.png`);
 
     // interactive object assets
-    this.load.image('coin', '/assets/coin.png');
+    this.load.image('coin', `${baseUrl}assets/coin.png`);
 
     // level assets
-    this.load.image('wallV', '/assets/wallVertical.png');
-    this.load.image('wallH', '/assets/wallHorizontal.png');
+    this.load.image('wallV', `${baseUrl}assets/wallVertical.png`);
+    this.load.image('wallH', `${baseUrl}assets/wallHorizontal.png`);
 
     // Display a loading label
     const loadLabel = this.add.text(250, 170, 'loading', {
