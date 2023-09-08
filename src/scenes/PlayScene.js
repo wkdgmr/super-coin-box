@@ -9,6 +9,26 @@ class PlayScene extends Phaser.Scene {
     // This method is called once, just after 'preload()'
     // It will initialize our scene, like the positions of the sprites
 
+    // additional pointer
+    this.input.addPointer(1);
+
+    // Check for mobile or desktop device
+    if (!this.sys.game.device.os.desktop) {
+      this.addMobileInputs();
+
+      // Create an empty label to write the error message if needed
+      this.rotateLabel = this.add.text(250, 170, '',
+        { font: '30px Arial', fill: '#fff', backgroundColor: '#000' });
+      this.rotateLabel.setOrigin(0.5, 0.5);
+
+      // call 'orientationChange' when the device is rotated
+      this.scale.on('orientationchange', this.orientationChange, this);
+
+      this.orientationChange();
+    }
+
+
+
     // player physics
     this.player = this.physics.add.sprite(250, 170, 'player');
     this.player.body.gravity.y = 500;
@@ -81,16 +101,38 @@ class PlayScene extends Phaser.Scene {
       this.takeCoin();
     }
   }
+
+  addMobileInputs() {
+    this.moveLeft = false;
+    this.moveRight = false;
+
+    let jumpButton = this.add.sprite(400, 290, 'jumpButton');
+    jumpButton.setInteractive();
+    jumpButton.on('pointerdown', this.jumpPlayer, this);
+    jumpButton.alpha = 0.5;
+
+    let leftButton = this.add.sprite(100, 290, 'leftButton');
+    leftButton.setInteractive();
+    leftButton.on('pointerover', () => this.moveLeft = true, this);
+    leftButton.on('pointerout', () => this.moveLeft = false, this);
+    leftButton.alpha = 0.5;
+
+    let rightButton = this.add.sprite(180, 290, 'rightButton');
+    rightButton.setInteractive();
+    rightButton.on('pointerover', () => this.moveRight = true, this);
+    rightButton.on('pointerout', () => this.moveRight = false, this);
+    rightButton.alpha = 0.5;
+  }
   
   movePlayer() {
     // if the left arrow key is pressed
-    if (this.arrow.left.isDown) {
+    if (this.arrow.left.isDown || this.moveLeft) {
       // Move the player to the left
       // The velocity is in pixels per second
       this.player.body.velocity.x = -200;
     }
     // if the right arrow key is pressed
-    else if (this.arrow.right.isDown) {
+    else if (this.arrow.right.isDown || this.moveRight) {
       // Move the player to the right
       this.player.body.velocity.x = 200;
     }
@@ -104,6 +146,16 @@ class PlayScene extends Phaser.Scene {
       // Move the player upward (jump)
       this.jumpSound.play(); // jump audio
       this.player.body.velocity.y = -320;
+    }
+  }
+
+  orientationChange() {
+    if (this.scale.orientation === Phaser.Scale.PORTRAIT) {
+      this.rotateLabel.setText(' rotate your device in landscape ');
+      this.scene.pause();
+    } else if (this.scale.orientation === Phaser.Scale.LANDSCAPE) {
+      this.rotateLabel.setText('');
+      this.scene.resume();
     }
   }
 

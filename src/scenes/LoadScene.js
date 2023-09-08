@@ -41,6 +41,10 @@ class LoadScene extends Phaser.Scene {
 
     // Change the point of origin of the text to make sure it will be centered
     loadLabel.setOrigin(0.5, 0.5);
+
+    this.load.image('jumpButton', `${baseUrl}/assets/jumpButton.png`);
+    this.load.image('leftButton', `${baseUrl}/assets/leftButton.png`);
+    this.load.image('rightButton', `${baseUrl}/assets/rightButton.png`);
   }
 
   create() {
