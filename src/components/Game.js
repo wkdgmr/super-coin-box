@@ -11,14 +11,24 @@ class Game extends React.Component {
       width: 500,
       height: 340,
       backgroundColor: '#3498db',
-      parent: 'game', 
       scene: [LoadScene, MenuScene, PlayScene],
-      physics: {
-        default: 'arcade',
-        arcade: {
-          debug: false,
+      physics: { default: 'arcade' },
+      parent: 'game',
+
+      scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+
+        min: {
+          width: 250,
+          height: 170,
         },
-      },
+
+        max: {
+          width: 1000,
+          height: 680,
+        }
+      }
     };
 
     new Phaser.Game(config);
