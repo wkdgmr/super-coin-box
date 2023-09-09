@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/super-coin-box/static/css/main.60f201f3.css",
-    "main.js": "/super-coin-box/static/js/main.83b6b2ec.js",
+    "main.js": "/super-coin-box/static/js/main.b5c3e525.js",
     "index.html": "/super-coin-box/index.html",
     "main.60f201f3.css.map": "/super-coin-box/static/css/main.60f201f3.css.map",
-    "main.83b6b2ec.js.map": "/super-coin-box/static/js/main.83b6b2ec.js.map"
+    "main.b5c3e525.js.map": "/super-coin-box/static/js/main.b5c3e525.js.map"
   },
   "entrypoints": [
     "static/css/main.60f201f3.css",
-    "static/js/main.83b6b2ec.js"
+    "static/js/main.b5c3e525.js"
   ]
 }
